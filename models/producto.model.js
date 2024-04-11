@@ -46,3 +46,17 @@ export const updateProductoModel = async(id, nombre, detalle, valor)=>{
         return 'Este ID no es válido';
     }
 }
+
+export const deleteProductoModel = async (id) => {
+    try {
+        let con = new pgService();
+        await con.connection.query(
+            `DELETE FROM PRODUCTO 
+            WHERE ID_PRODUCTO = $1`
+            , [id]);
+        return "Se ha eliminado el producto";
+    } catch (error) {
+        console.error("Error al eliminar producto:", error);
+        return "Error al eliminar el producto";
+    }
+}

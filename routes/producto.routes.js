@@ -8,6 +8,7 @@ const routeProducto = Router();
 routeProducto.get("/", productoController.getProducto)
 routeProducto.get("/:id", productoController.getProductoUnico)
 routeProducto.post("/", validate(postProductoValidator), productoController.postProducto)
-routeProducto.put("/:id", productoController.updateProducto)
+routeProducto.put("/:id", validate(postProductoValidator),productoController.updateProducto)
+routeProducto.delete("/:id", productoController.deleteProducto)
 
 export default routeProducto; 
